@@ -44,7 +44,6 @@ const AddTask = () => {
 
                         title,
                         img: imgData.data.url,
-
                         description,
 
 
@@ -52,26 +51,26 @@ const AddTask = () => {
                     console.log(addTask)
 
 
-                    //         fetch('', {
-                    //             method: 'POST',
-                    //             headers: {
-                    //                 'content-type': 'application/json'
-                    //             },
-                    //             body: JSON.stringify(addTask)
-                    //         })
-                    //             .then(res => res.json())
-                    //             .then(data => {
-                    //                 console.log(data)
-                    //                 if (data.acknowledged) {
-                    //                     alert(`You have added a task successfully`)
+                    fetch('http://localhost:5000/addedtask', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(addTask)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
 
-                    //                 }
-                    //                 else {
-                    //                     alert('Error')
-                    //                 }
-                    //             })
-                    //             .catch(err => console.error(err))
-                    //         console.log(addTask)
+                            if (data.acknowledged) {
+                                alert(`You have added a task successfully`)
+
+                            }
+                            else {
+                                alert('Error')
+                            }
+                        })
+                        .catch(err => console.error(err))
+
                 }
             })
 
