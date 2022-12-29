@@ -1,13 +1,19 @@
 import React from 'react';
-import CommentModal from '../Modal/CommentModal';
+import { toast } from 'react-hot-toast';
+
 
 const SingleTask = ({ singleTask, handleDelete }) => {
+
+
     const { title, description, img } = singleTask
-    // incomplete
+
+
+    // incomplete task 
+
     const handleIncomplete = event => {
         event.preventDefault()
 
-        fetch(`http://localhost:5000/incomplete/${singleTask._id}`, {
+        fetch(`https://add-task-server.vercel.app/incomplete/${singleTask._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -17,15 +23,15 @@ const SingleTask = ({ singleTask, handleDelete }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('Information Updated !!!')
+                    toast.success("Ops !!! It was an incomplete task")
                 }
             })
     }
 
 
     return (
-        <div className='flex flex-col items-center py-10 space-y-3'>
-            <a href="#" class="block rounded-lg p-4 shadow-sm border-2 bg-gray-700 w-96">
+        <div className='flex flex-col items-center py-10 relative'>
+            <a href="#" class="block rounded-lg p-4 shadow-sm border-2 bg-gray-700 w-80 md:w-96 h-[600px]">
                 <img
                     alt="Home"
                     src={img}
@@ -35,7 +41,7 @@ const SingleTask = ({ singleTask, handleDelete }) => {
                 <div class="mt-2">
                     <dl>
                         <div>
-                            <dd class="text-xl text-center text-white">{title}</dd>
+                            <dd class="text-xl mb-3 text-center text-white">{title}</dd>
                         </div>
 
                         <div>
@@ -47,30 +53,31 @@ const SingleTask = ({ singleTask, handleDelete }) => {
 
                     <div class="mt-6 flex items-center  gapx-6 text-xs">
                         <div class="sm:inline-flex sm:shrink-0 sm:items-center">
-
-                            <CommentModal className=' bg-black rounded-lg font-bold font-mono text-white px-3 py-2' />
-
-
-                            {/* 
-                            <div onClick={openModal} class="mt-1.5 sm:ml-3 sm:mt-0">
-                                <button className='bg-black rounded-lg font-bold font-mono text-white px-3 py-2'>Add a comment</button>
-                            </div> */}
                         </div>
+                        {/* button */}
 
-                        <div class="sm:inline-flex sm:shrink-0 sm:items-center">
+                        <div className='flex pr-4 absolute 
+                        bottom-16 md:bottom-44'>
 
 
-                            <div class="mt-1.5 sm:ml-3 sm:mt-0">
-                                <button onClick={() => handleDelete(singleTask)} className='bg-black rounded-lg font-bold font-mono text-white px-3 py-2'>Delete</button>
+                            <div class="mr-3">
+                                <button className='bg-teal-accent-400 hover:bg-teal-700 text-sm md:text-lg   rounded-lg font-medium text-gray-900 px-3 py-2'>Comment</button>
                             </div>
 
-                        </div>
-
-                        <div class="sm:inline-flex sm:shrink-0 sm:items-center">
 
 
-                            <div onClick={handleIncomplete} class="mt-1.5 sm:ml-3 sm:mt-0">
-                                <button className='bg-black rounded-lg font-bold font-mono text-white px-3 py-2'>Not completed?</button>
+
+                            <div>
+                                <button onClick={() => handleDelete(singleTask)} className='bg-teal-accent-400 hover:bg-teal-700 text-sm md:text-lg   rounded-lg font-medium text-gray-900 px-3 py-2'>Delete</button>
+                            </div>
+
+
+
+
+
+
+                            <div onClick={handleIncomplete} class="ml-2">
+                                <button className='bg-teal-accent-400 hover:bg-teal-700 text-sm md:text-lg   rounded-lg font-medium text-gray-900 px-3 py-2'>Incomplete?</button>
                             </div>
 
                         </div>

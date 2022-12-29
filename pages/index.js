@@ -1,23 +1,19 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
-import Login from './signup'
-import UserContext from '../components/context/UserContext'
-import Signup from './signup'
 import NavBar from '../components/NavBar/NavBar'
+import Hero from '../components/Hero/Hero'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
+    <div className='bg-black'>
+      <NavBar />
 
-    <UserContext>
-      <div>
-        <NavBar />
-
+      <div className='min-h-screen'>
+        <Hero />
       </div>
-    </UserContext>
+    </div>
 
   )
+
 }

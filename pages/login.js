@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../components/context/UserContext";
 import NavBar from "../components/NavBar/NavBar";
 
@@ -21,10 +22,11 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
+                toast.success('You have logged in successfully !!!')
                 form.reset('')
-                console.log(user)
+
             })
-            .catch(error => console.error(error))
+            .catch(error => toast.error(`${error}.'Please provide valid Email/Password'`))
     }
 
     return (
@@ -40,14 +42,14 @@ const Login = () => {
 
                         <label className="text-xl" htmlFor="email">Email address</label>
                         <input
-                            className="px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none focus:border-yellow-600 focus:ring-1 focus:ring-yellow-800"
+                            className="px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none text-black"
                             type="text" name="email" id="" required />
 
 
 
                         <label className="text-xl" htmlFor="password">Password</label>
                         <input
-                            className=" px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none focus:border-yellow-800 focus:ring-1 focus:ring-yellow-800"
+                            className=" px-3 py-2 rounded-lg shadow-sm border  border-gray-300 w-full focus:outline-none text-black"
                             type="password" name="password" id="" required />
 
                         <p></p>
@@ -55,7 +57,7 @@ const Login = () => {
 
 
 
-                        <button className="font-semibold text-xl  text-white py-2 rounded-md bg-indigo-800 w-full">Login</button>
+                        <button className="font-semibold text-xl  text-white py-2 rounded-md bg-teal-500 hover:bg-teal-700 w-full">Login</button>
                         <p className='text-xl'>Already have an account? <Link className='text-xl text-blue-700 hover:underline' href='/signup'>Sign up here</Link></p>
                     </form>
 

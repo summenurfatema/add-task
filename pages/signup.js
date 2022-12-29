@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../components/context/UserContext";
 import NavBar from "../components/NavBar/NavBar";
 
@@ -18,22 +19,22 @@ const Signup = () => {
 
 
         if (password.length < 6) {
-            alert('Please enter at least 6 characters !!')
+            toast.error('Please enter at least 6 characters !!')
             return;
         }
         if (password !== confirm) {
-            alert('Please enter correct password !!')
+            toast.error('Please enter correct password !!')
             return;
         }
-        else { alert('Registered Successfully !!!') }
+        else { toast.success('Welcome to MY NOTEPAD !!!') }
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 form.reset('')
-                console.log(user)
+
             })
-            .catch(error => console.error(error))
+            .catch(error => toast.error(`${error}. 'Please  valid Email/Password'`))
     }
 
 
@@ -80,8 +81,8 @@ const Signup = () => {
 
 
 
-                        <button className="font-semibold text-xl text-white py-2 rounded-md bg-indigo-800 w-full">Register</button>
-                        <p className='text-xl text-white'>Already have an account? <Link className='text-xl text-blue-700 hover:underline' href='/login'>Log in</Link></p>
+                        <button className="font-semibold text-xl text-white py-2 rounded-md bg-teal-500 hover:bg-teal-700 w-full">Register</button>
+                        <p className='text-xl text-white'>Already have an account? <Link className='text-xl text-blue-700 hover:underline' href='/login'>Log in here</Link></p>
 
                     </form>
 

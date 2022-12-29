@@ -36,7 +36,7 @@ export const NavBar = () => {
                                 <rect x="14" y="11" width="7" height="12" />
                             </svg>
                             <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                                Task
+                                My Notepad
                             </span>
                         </a>
                         <ul className="flex items-center hidden space-x-8 lg:flex">
@@ -76,16 +76,28 @@ export const NavBar = () => {
                     <ul className="flex items-center hidden space-x-8 lg:flex">
                         {user ?
 
+                            <>
+                                <li onClick={logOut} aria-label="Sign in"
 
-                            <li onClick={logOut} aria-label="Sign in"
-                                title="Sign in"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400" >
+                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400" >
 
 
 
-                                Log out
+                                    Log out
 
-                            </li>
+                                </li>
+
+                                <li>
+                                    <Link
+                                        href="/login"
+                                        aria-label="Sign in"
+                                        title="Log in"
+                                        className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    >
+                                        Log in
+                                    </Link>
+                                </li>
+                            </>
                             :
                             <>
                                 <li>
@@ -101,7 +113,7 @@ export const NavBar = () => {
                                 <li>
                                     <Link
                                         href="/signup"
-                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-500 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
                                         aria-label="Sign up"
                                         title="Sign up"
                                     >
@@ -158,7 +170,7 @@ export const NavBar = () => {
                                                 className="inline-flex items-center"
                                             >
                                                 <svg
-                                                    className="w-8 text-deep-purple-accent-400"
+                                                    className="w-8 text-teal-accent-400"
                                                     viewBox="0 0 24 24"
                                                     strokeLinejoin="round"
                                                     strokeWidth="2"
@@ -173,7 +185,7 @@ export const NavBar = () => {
                                                     <rect x="14" y="11" width="7" height="12" />
                                                 </svg>
                                                 <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                                                    Company
+                                                    My Notepad
                                                 </span>
                                             </a>
                                         </div>
@@ -200,7 +212,7 @@ export const NavBar = () => {
                                                     href="/addtask"
                                                     aria-label="Our product"
                                                     title="Our product"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
                                                 >
                                                     Add Task
                                                 </Link>
@@ -210,7 +222,7 @@ export const NavBar = () => {
                                                     href="/mytask"
                                                     aria-label="Our product"
                                                     title="Our product"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
                                                 >
                                                     My Task
                                                 </Link>
@@ -220,24 +232,38 @@ export const NavBar = () => {
                                                     href="/completedtask"
                                                     aria-label="Product pricing"
                                                     title="Product pricing"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
                                                 >
                                                     Completed Task
                                                 </Link>
                                             </li>
 
                                             {user ?
+                                                <>
+                                                    <li>
+                                                        <Link
+                                                            href="/login"
+                                                            aria-label="Sign in"
+                                                            title="Sign in"
+                                                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
+                                                        >
+                                                            Log in
+                                                        </Link>
+                                                    </li>
 
 
-                                                <li onClick={logOut}
 
-                                                    aria-label="Sign in"
-                                                    title="Sign in"
-                                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                                                >
-                                                    Log out
 
-                                                </li>
+                                                    <li onClick={logOut}
+
+                                                        aria-label="Sign in"
+
+                                                        className="font-medium tracking-wide text-black transition-colors duration-200 "
+                                                    >
+                                                        Log out
+
+                                                    </li>
+                                                </>
                                                 :
                                                 <>
                                                     <li>
@@ -245,7 +271,7 @@ export const NavBar = () => {
                                                             href="/login"
                                                             aria-label="Sign in"
                                                             title="Sign in"
-                                                            className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
                                                         >
                                                             Log in
                                                         </Link>
@@ -253,7 +279,7 @@ export const NavBar = () => {
                                                     <li>
                                                         <Link
                                                             href="/signup"
-                                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-teal-accent-400 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
                                                             aria-label="Sign up"
                                                             title="Sign up"
                                                         >

@@ -1,42 +1,14 @@
-import { useEffect, useState } from "react";
-import NavBar from "../NavBar/NavBar";
+import { toast } from "react-hot-toast";
+
 
 const Task = ({ task }) => {
-    const { title, description, img, email, action, _id } = task
-
-    const [update, setUpdate] = useState({})
-
-    // const handleCompletedTask = async () => {
-    //     const response = await fetch("http://localhost:5000/completedtask", {
-
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(task)
-    //     })
-
-    //         .then(res => res.json())
-    //         .then(data => {
-
-    //             if (data.acknowledged) {
-    //                 alert("Congrates ! You've completed your task")
-
-    //             }
-    //             else {
-    //                 alert('Error')
-    //             }
-    //         })
-    //         .catch(err => console.error(err))
+    const { title, description, img, action } = task
 
 
-    // }
+    // complete
+    const handleComplete = () => {
 
-
-    const handlecomplete = event => {
-        event.preventDefault()
-
-        fetch(`http://localhost:5000/complete/${task._id}`, {
+        fetch(`https://add-task-server.vercel.app/complete/${task._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -46,21 +18,27 @@ const Task = ({ task }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('Information Updated !!!')
+                    toast.success("YaY !!! You've complete this task  !!!")
+                    location.reload()
+
+
                 }
             })
     }
 
+
+    // delete
+
     const handleDelete = task => {
         const agree = window.confirm('Are you sure to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/alltask/${task._id}`, {
+            fetch(`https://add-task-server.vercel.app/alltask/${task._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('This task deleted successfully')
+                        toast.error('This task deleted successfully')
                         location.reload()
                     }
                 })
@@ -74,52 +52,66 @@ const Task = ({ task }) => {
     return (
         <div>
 
-            <div className="w-80">
-                <a class="group block h-[450px]">
-                    <div
-                        class="relative flex h-full items-end rounded-3xl border-4 border-black bg-white p-8 transition group-hover:-translate-x-2 group-hover:-translate-y-2 group-hover:shadow-[8px_8px_0_0_#000]"
-                    >
-                        <div>
-                            <div class="flex flex-col lg:group-hover:absolute -top-20  lg:group-hover:opacity-0 items-center justify-center ml-8">
-                                <img className="h-32 w-44 my-2 relative -top-10 rounded-3xl" src={img} alt='' />
+            <div className='flex flex-col items-center py-10'>
+                <a href="#" class="block rounded-lg p-4 shadow-sm border-2 bg-gray-700 h-[700px] w-80 md:w-96 relative">
+                    <img
+                        alt="Home"
+                        src={img}
+                        class="h-56 w-56 ml-8 md:ml-14 rounded-md object-cover"
+                    />
 
-                                <p class=" text-xl font-bold sm:text-2xl">{title}</p>
+                    <div class="mt-2">
+                        <dl>
+                            <div>
+                                <dd class="text-xl pb-4 text-center text-white">{title}</dd>
                             </div>
-                        </div>
-
-                        <div
-                            class="absolute opacity-0 -top-28 lg:group-hover:relative lg:group-hover:opacity-100"
-                        >
 
 
-                            <p class="-mt-60 text-lg font-medium leading-relaxed">
-                                {description}
-                            </p>
                             <div>
 
-                                <div className="">
-                                    <button className=" bg-black text-white px-2 py-3 rounded-xl absolute -bottom-32 left-0 font-mono">
-                                        Update
-                                    </button>
+
+                                <dd class="text-xl text-white font-medium">{description}</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="mt-6 flex items-center  gapx-6 text-xs">
+                        <div class="sm:inline-0 -ml-2 md:ml-0 flex absolute bottom-1 space-x-1 md:space-x-4 sm:shrink-0 sm:items-center">
+
+
+                            <div className="">
+
+
+                                <div class="mt-1.5 sm:ml-3 sm:mt-0">
+                                    <button className='bg-teal-500 hover:bg-teal-700 text-xl rounded-lg font-medium  text-gray-900 px-3 py-2'>Update</button>
                                 </div>
-                                <div>
-                                    <button onClick={() => handleDelete(task)} className=" bg-black text-white px-2 py-3 rounded-xl font-mono absolute -bottom-32 left-20">
-                                        Delete                            </button>
+                            </div>
+
+                            <div class="sm:inline-flex sm:shrink-0 sm:items-center">
+
+
+                                <div class="mt-1.5 sm:ml-3 sm:mt-0">
+                                    <button onClick={() => handleDelete(task)} className='bg-teal-500 hover:bg-teal-700 text-xl rounded-lg font-medium  text-gray-900 px-3 py-2'>Delete</button>
                                 </div>
+
+                            </div>
+
+                            <div class="sm:inline-flex sm:shrink-0 sm:items-center">
 
                                 {
-                                    action === "incomplete" ?
+                                    action === "completed" ?
 
-                                        <button onClick={handlecomplete} className=" bg-black text-white px-2 py-3 rounded-xl font-mono absolute absolute -bottom-32 left-40">
-                                            Complete
-                                        </button>
+
+                                        <div class="mt-1.5 sm:ml-3 sm:mt-0">
+                                            <button className='bg-teal-300 text-lg rounded-lg font-medium font-mono text-gray-900 px-3 py-2'>Completed</button>
+                                        </div>
+
 
                                         :
 
-                                        <button disabled title="Already completed" className=" bg-gray-700 text-white px-2 py-3 rounded-xl font-mono absolute absolute -bottom-32 left-40">
-                                            Completed
-                                        </button>
-
+                                        <div onClick={() => handleComplete(task._id)} class="mt-1.5 sm:ml-3 sm:mt-0">
+                                            <button className='bg-teal-500 hover:bg-teal-700 text-lg rounded-lg font-medium  text-gray-900 px-3 py-2'>Complete</button>
+                                        </div>
 
                                 }
 
@@ -131,13 +123,10 @@ const Task = ({ task }) => {
 
                     </div>
                 </a>
-
-
-
             </div>
-
-
         </div>
+
+
     );
 };
 

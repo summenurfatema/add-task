@@ -9,17 +9,17 @@ const Mytask = () => {
     const { user } = useContext(AuthContext)
     const [tasks, setTasks] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/mytask?email=${user?.email}`)
+        fetch(`https://add-task-server.vercel.app/mytask?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setTasks(data))
 
-    })
+    }, [user?.email])
 
     console.log(tasks);
     return (
-        <div>
+        <div className="">
             <NavBar />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-8 px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 py-8 px-4 bg-gray-900 min-h-[1000px]">
 
                 {
                     tasks.map(task => <Task key={task._id} task={task} />)

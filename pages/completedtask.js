@@ -1,15 +1,15 @@
-
 import NavBar from "../components/NavBar/NavBar";
 import SingleTask from "../components/SingleTask/SingleTask";
 
 
 const CompletedTask = ({ completedTasks }) => {
 
+
     // delete
     const handleDelete = singleTask => {
         const agree = window.confirm('Are you sure to delete ?')
         if (agree) {
-            fetch(`http://localhost:5000/completedtasks/${singleTask._id}`, {
+            fetch(`https://add-task-server.vercel.app/completedtasks/${singleTask._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -23,15 +23,17 @@ const CompletedTask = ({ completedTasks }) => {
     }
 
 
-
-
-
     return (
         <div>
             <NavBar />
 
-            <div className="grid grid-cols-2 gap-6  bg-gray-900">
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-900 min-h-screen" >
+
+
                 {completedTasks.map(singleTask =>
+
+
                     <SingleTask key={singleTask._id}
                         singleTask={singleTask}
                         handleDelete={handleDelete}
@@ -46,7 +48,7 @@ const CompletedTask = ({ completedTasks }) => {
 export default CompletedTask;
 
 export const getStaticProps = async () => {
-    const res = await fetch(`http://localhost:5000/completetasks/completed
+    const res = await fetch(`https://add-task-server.vercel.app/completetasks/completed
     `)
     const data = await res.json()
     return {
