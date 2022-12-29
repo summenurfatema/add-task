@@ -57,7 +57,7 @@ const SingleTask = ({ singleTask, handleDelete }) => {
                         {/* button */}
 
                         <div className='flex pr-4 absolute 
-                        bottom-16 md:bottom-44'>
+                        bottom-16 md:bottom-16'>
 
 
                             <div class="mr-3">

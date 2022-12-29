@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "../context/UserContext";
 
 const Hero = () => {
+    const { user } = useContext(AuthContext)
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 pb-32">
             <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
@@ -56,12 +59,29 @@ const Hero = () => {
                         </p>
                     </div>
                     <div>
-                        <Link
-                            href="/"
-                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
-                        >
-                            Add a task
-                        </Link>
+
+                        {
+                            user?.uid ?
+
+                                <Link
+                                    href="/addtask"
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
+                                >
+                                    Add a task
+                                </Link>
+
+                                :
+
+                                <Link
+                                    href="/login"
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
+                                >
+                                    Add a task
+                                </Link>
+
+
+                        }
+
                     </div>
                 </div>
             </div>
