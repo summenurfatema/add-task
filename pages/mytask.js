@@ -1,7 +1,20 @@
+import { useContext, useState, useEffect } from "react";
+import { AuthContext } from "../components/context/UserContext";
 import NavBar from "../components/NavBar/NavBar";
 import Task from "../components/Task/Task";
 
-const Mytask = ({ tasks }) => {
+
+
+const Mytask = () => {
+    const { user } = useContext(AuthContext)
+    const [tasks, setTasks] = useState([])
+    useEffect(() => {
+        fetch(`http://localhost:5000/mytask?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setTasks(data))
+
+    })
+
     console.log(tasks);
     return (
         <div>
@@ -18,12 +31,5 @@ const Mytask = ({ tasks }) => {
 };
 
 export default Mytask;
-export const getStaticProps = async () => {
-    const res = await fetch(`http://localhost:5000/mytasks`)
-    const data = await res.json()
-    return {
-        props: {
-            tasks: data
-        }
-    }
-}
+
+

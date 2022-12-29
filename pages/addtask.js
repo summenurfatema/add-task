@@ -1,10 +1,13 @@
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../components/context/UserContext';
 import NavBar from '../components/NavBar/NavBar';
+import PrivateRoute from '../components/PrivateRoute/PrivateRoute';
 // import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle';
 
 const AddTask = () => {
     // const [value, onChange] = useState(new Date());
+    const { user } = useContext(AuthContext)
 
     const imgBbKey = "5264a75dacc9a5a19565b12a2671f321"
     console.log(imgBbKey)
@@ -25,6 +28,7 @@ const AddTask = () => {
         event.preventDefault()
         const form = event.target
         const title = form.title.value
+        const email = form.email.value
         const img = form.img.files[0]
         const description = form.description.value
 
@@ -41,10 +45,11 @@ const AddTask = () => {
                 if (imgData.success) {
 
                     const addTask = {
-
+                        email,
                         title,
                         img: imgData.data.url,
                         description,
+                        action: "incomplete"
 
 
                     }
@@ -78,6 +83,7 @@ const AddTask = () => {
 
 
     return (
+
         <div>
 
             <NavBar />
@@ -104,6 +110,7 @@ const AddTask = () => {
                         {/* 
                     <DateTimePicker onChange={onChange} value={value} className='bg-white w-full' /> */}
                         {/* <label class="text-xl" htmlFor="title">Task Title</label> */}
+                        <input name="email" value={user?.email} placeholder={user?.email} readOnly />
                         <input
                             class="px-3 py-2 rounded-lg shadow-sm border  border-none w-full focus:outline-none  bg-gray-900 text-white" placeholder='Title'
                             type="text" name="title" id="" required />

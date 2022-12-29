@@ -40,29 +40,36 @@ export const NavBar = () => {
                             </span>
                         </a>
                         <ul className="flex items-center hidden space-x-8 lg:flex">
-                            <li>
+                            {
+                                user &&
+                                <>
+                                    <li>
 
-                                <Link href='/addtask' aria-label="Our product"
-                                    title="Our product"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
-                                    Add Task
-                                </Link>
+                                        <Link href='/addtask' aria-label="Our product"
+                                            title="Our product"
+                                            className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+                                            Add Task
+                                        </Link>
 
-                            </li>
-                            <li>
-                                <Link href='/mytask' aria-label="Our product"
-                                    title="Our product"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
-                                    My Task
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href='/completedtask' aria-label="Our product"
-                                    title="Our product"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
-                                    Completed Task
-                                </Link>
-                            </li>
+                                    </li>
+                                    <li>
+                                        <Link href='/mytask' aria-label="Our product"
+                                            title="Our product"
+                                            className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+                                            My Task
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href='/completedtask' aria-label="Our product"
+                                            title="Our product"
+                                            className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400">
+                                            Completed Task
+                                        </Link>
+                                    </li>
+                                </>
+
+                            }
+
 
                         </ul>
                     </div>
