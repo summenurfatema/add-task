@@ -10,7 +10,7 @@ export const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div className="bg-gray-900">
+        <div className="bg-gray-900 z-40">
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     <div className="flex items-center">
@@ -41,7 +41,7 @@ export const NavBar = () => {
                         </a>
                         <ul className="flex items-center hidden space-x-8 lg:flex">
                             {
-                                user &&
+                                user?.uid &&
                                 <>
                                     <li>
 
@@ -79,7 +79,7 @@ export const NavBar = () => {
                             <>
                                 <li onClick={logOut} aria-label="Sign in"
 
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400" >
+                                    className="font-medium tracking-wide text-gray-100 cursor-pointer transition-colors duration-200 hover:text-teal-accent-400" >
 
 
 
@@ -159,7 +159,7 @@ export const NavBar = () => {
                             </svg>
                         </button>
                         {isMenuOpen && (
-                            <div className="absolute top-0 left-0 w-full">
+                            <div className="absolute top-0 left-0 w-full z-40">
                                 <div className="p-5 bg-white border rounded shadow-sm">
                                     <div className="flex items-center justify-between mb-4">
                                         <div>
@@ -207,37 +207,43 @@ export const NavBar = () => {
                                     </div>
                                     <nav>
                                         <ul className="space-y-4">
-                                            <li>
-                                                <Link
-                                                    href="/addtask"
-                                                    aria-label="Our product"
-                                                    title="Our product"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
-                                                >
-                                                    Add Task
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="/mytask"
-                                                    aria-label="Our product"
-                                                    title="Our product"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
-                                                >
-                                                    My Task
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="/completedtask"
-                                                    aria-label="Product pricing"
-                                                    title="Product pricing"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
-                                                >
-                                                    Completed Task
-                                                </Link>
-                                            </li>
+                                            {
+                                                user?.uid &&
+                                                <>
 
+
+                                                    <li>
+                                                        <Link
+                                                            href="/addtask"
+                                                            aria-label="Our product"
+                                                            title="Our product"
+                                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
+                                                        >
+                                                            Add Task
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link
+                                                            href="/mytask"
+                                                            aria-label="Our product"
+                                                            title="Our product"
+                                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
+                                                        >
+                                                            My Task
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link
+                                                            href="/completedtask"
+                                                            aria-label="Product pricing"
+                                                            title="Product pricing"
+                                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
+                                                        >
+                                                            Completed Task
+                                                        </Link>
+                                                    </li>
+                                                </>
+                                            }
                                             {user ?
                                                 <>
                                                     <li>
@@ -245,7 +251,7 @@ export const NavBar = () => {
                                                             href="/login"
                                                             aria-label="Sign in"
                                                             title="Sign in"
-                                                            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
+                                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-teal-accent-400"
                                                         >
                                                             Log in
                                                         </Link>
@@ -258,7 +264,7 @@ export const NavBar = () => {
 
                                                         aria-label="Sign in"
 
-                                                        className="font-medium tracking-wide text-black transition-colors duration-200 "
+                                                        className="font-medium tracking-wide cursor-pointer text-gray-700 transition-colors duration-200 "
                                                     >
                                                         Log out
 
@@ -290,7 +296,7 @@ export const NavBar = () => {
 
                                             }
                                             <li>
-                                                <img title={user ? user?.displayName : 'Guest'} className='w-12 h-12 rounded-ful' src={user ? "https://img.freepik.com/free-icon/woman_318-157570.jpg?size=338&ext=jpg&ga=GA1.2.821203553.1657130385&semt=ais" : "https://img.freepik.com/free-icon/user-black-close-up-shape_318-48677.jpg?size=338&ext=jpg&ga=GA1.2.821203553.1657130385&semt=ais"} alt='' />
+                                                <img title={user ? user?.displayName : 'Guest'} className='w-12 h-12 rounded-full' src={user ? "https://img.freepik.com/free-icon/woman_318-157570.jpg?size=338&ext=jpg&ga=GA1.2.821203553.1657130385&semt=ais" : "https://img.freepik.com/free-icon/user-black-close-up-shape_318-48677.jpg?size=338&ext=jpg&ga=GA1.2.821203553.1657130385&semt=ais"} alt='' />
                                             </li>
                                         </ul>
                                     </nav>

@@ -88,8 +88,8 @@ const AddTask = () => {
         <div>
 
             <NavBar />
-            <div className='bg-gray-900 flex justify-center items-center py-16 min-h-[1000px] '>
-                <div class="flex flex-col items-center space-y-1 shadow-lg  w-[600px] p-10 md:space-y-3 border-2 hover:shadow-white hover:shadow-lg">
+            <div className='bg-black flex justify-center items-center py-16 min-h-[1000px] '>
+                <div className="flex flex-col items-center space-y-1 shadow-lg  w-[600px] p-10 md:space-y-3 border-2 bg-gray-900 hover:shadow-white hover:shadow-lg">
 
                     <h1 className='text-3xl text-center font-bold mb-10 text-white border-b w-full pb-2'>Add a task <FaPencilAlt className='inline-block text-teal-accent-400 mb-2' /></h1>
 
@@ -103,34 +103,34 @@ const AddTask = () => {
                         }
                     </div>
 
-                    <form onSubmit={handleAddTask} class="flex flex-col items-start space-y-3 border-2 p-2 rounded-lg hover:shadow-white hover:shadow-lg w-full">
+                    <form onSubmit={handleAddTask} className="flex flex-col items-start space-y-3 border-2 p-2 rounded-lg hover:shadow-white hover:shadow-lg w-full">
 
 
                         <input hidden name="email" value={user?.email} placeholder={user?.email} readOnly />
 
 
                         <input
-                            class="px-3 py-2 rounded-lg shadow-sm border  border-none w-full focus:outline-none  bg-gray-900 text-white" placeholder='Title'
+                            className="px-3 py-2 rounded-lg shadow-sm border  border-none w-full focus:outline-none  bg-gray-900 text-white" placeholder='Title'
                             type="text" name="title" id="" required />
 
 
-                        <textarea
-                            class="px-3 py-2 rounded-lg shadow-sm border  border-none w-full focus:outline-none  bg-gray-900 text-white" placeholder='Details'
+                        <textarea maxLength={300}
+                            className="px-3 py-2 rounded-lg shadow-sm border  border-none w-full focus:outline-none  bg-gray-900 text-white" placeholder='Details'
                             type="text" name="description" id="" required />
 
 
 
                         <input
-                            class=" px-3 py-2 rounded-lg shadow-sm border  border-none w-full focus:outline-none  bg-gray-900 text-white"
+                            className=" px-3 py-2 rounded-lg shadow-sm border  border-none w-full focus:outline-none  bg-gray-900 text-white"
                             type="file" name="img" id="" onChange={check} accept='image/*' required />
 
 
 
-                        <div class="flex items-center space-x-2">
+                        <div className="flex items-center space-x-2">
 
                         </div>
 
-                        <button class="font-semibold text-xl text-white py-2 rounded-md bg-teal-500 hover:bg-teal-700 w-full">Submit</button>
+                        <button className="font-semibold text-xl text-white py-2 rounded-md bg-teal-500 hover:bg-teal-700 w-full">Submit</button>
 
                     </form>
 

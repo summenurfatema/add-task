@@ -1,4 +1,8 @@
+import Image from "next/image";
+import Link from "next/link";
 import { toast } from "react-hot-toast";
+import Mytask1 from "../../pages/mytask1";
+import { FaTrashAlt } from "react-icons/fa";
 
 
 const Task = ({ task }) => {
@@ -19,7 +23,7 @@ const Task = ({ task }) => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     toast.success("YaY !!! You've complete this task  !!!")
-                    location.reload()
+
 
 
                 }
@@ -39,7 +43,7 @@ const Task = ({ task }) => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         toast.error('This task deleted successfully')
-                        location.reload()
+
                     }
                 })
         }
@@ -51,81 +55,44 @@ const Task = ({ task }) => {
 
     return (
         <div>
-
-            <div className='flex flex-col items-center py-10'>
-                <a href="#" class="block rounded-lg p-4 shadow-sm border-2 bg-gray-700 h-[700px] w-80 md:w-96 relative">
-                    <img
-                        alt="Home"
-                        src={img}
-                        class="h-56 w-56 ml-8 md:ml-14 rounded-md object-cover"
-                    />
-
-                    <div class="mt-2">
-                        <dl>
-                            <div>
-                                <dd class="text-xl pb-4 text-center text-white">{title}</dd>
-                            </div>
-
-
-                            <div>
-
-
-                                <dd class="text-xl text-white font-medium">{description}</dd>
-                            </div>
-                        </dl>
+            <div className="group block h-96">
+                <div
+                    className="relative flex h-full items-center rounded-3xl border-4 border-black bg-gray-900 p-8 transition group-hover:-translate-x-2 group-hover:-translate-y-2 group-hover:shadow-[5px_5px_0_0_#fff]"
+                >
+                    <div className="group-hover:absolute group-hover:opacity-0">
+                        <img src={img} alt='' className="h-32 w-32 rounded-3xl" />
+                        <p className="mt-4 text-lg font-semibold sm:text-2xl text-white">{title}</p>
                     </div>
 
-                    <div class="mt-6 flex items-center  gapx-6 text-xs">
-                        <div class="sm:inline-0 -ml-2 md:ml-0 flex absolute bottom-1 space-x-1 md:space-x-4 sm:shrink-0 sm:items-center">
+                    <div
+                        className="absolute opacity-0 shadow-white group-hover:relative group-hover:opacity-100"
+                    >
+                        <div className="bg-white p-2 rounded-lg mb-2 w-10"><FaTrashAlt onClick={() => handleDelete(task)} className='text-2xl text-teal-accent-400' /> </div>
+                        <p className="text-lg font-medium pb-1 text-white">{description}</p>
+                        <div >
+
+                            {
+                                action === 'completed' ?
+                                    <button className="bg-teal-200 text-gray-900 rounded-lg px-3 w-full py-2 text-sm md:text-lg font-semibold">Completed</button>
 
 
-                            <div className="">
+                                    :
+                                    <button onClick={() => handleComplete(task._id)} className="bg-teal-accent-400 text-gray-900 rounded-lg px-3 w-full py-2 text-lg font-semibold">Complete</button>
+
+                            }
 
 
-                                <div class="mt-1.5 sm:ml-3 sm:mt-0">
-                                    <button className='bg-teal-500 hover:bg-teal-700 text-xl rounded-lg font-medium  text-gray-900 px-3 py-2'>Update</button>
-                                </div>
-                            </div>
-
-                            <div class="sm:inline-flex sm:shrink-0 sm:items-center">
-
-
-                                <div class="mt-1.5 sm:ml-3 sm:mt-0">
-                                    <button onClick={() => handleDelete(task)} className='bg-teal-500 hover:bg-teal-700 text-xl rounded-lg font-medium  text-gray-900 px-3 py-2'>Delete</button>
-                                </div>
-
-                            </div>
-
-                            <div class="sm:inline-flex sm:shrink-0 sm:items-center">
-
-                                {
-                                    action === "completed" ?
-
-
-                                        <div class="mt-1.5 sm:ml-3 sm:mt-0">
-                                            <button className='bg-teal-300 text-lg rounded-lg font-medium font-mono text-gray-900 px-3 py-2'>Completed</button>
-                                        </div>
-
-
-                                        :
-
-                                        <div onClick={() => handleComplete(task._id)} class="mt-1.5 sm:ml-3 sm:mt-0">
-                                            <button className='bg-teal-500 hover:bg-teal-700 text-lg rounded-lg font-medium  text-gray-900 px-3 py-2'>Complete</button>
-                                        </div>
-
-                                }
-
-
-
-                            </div>
                         </div>
 
 
                     </div>
-                </a>
+                </div>
             </div>
-        </div>
 
+
+
+
+        </div>
 
     );
 };

@@ -17,10 +17,10 @@ const Mytask = () => {
 
     console.log(tasks);
     return (
-        <div className="">
+        <div>
             <NavBar />
             <div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 py-8 px-4 bg-gray-900 min-h-[1000px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  md:gap-3 py-8 px-4 bg-black border-black">
 
                     {
                         tasks.map(task => <Task key={task._id} task={task} />)

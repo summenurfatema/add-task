@@ -39,7 +39,7 @@ const CompletedTask = () => {
             <NavBar />
 
             <div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-900 min-h-screen" >
+                <div className="grid grid-cols-1 px-6 md:grid-cols-3 gap-6 bg-black min-h-screen z-0 py-7" >
 
 
                     {completedTasks.map(singleTask =>
@@ -59,13 +59,3 @@ const CompletedTask = () => {
 
 export default CompletedTask;
 
-// export const getStaticProps = async () => {
-//     const res = await fetch(`https://add-task-server.vercel.app/completetasks/completed
-//     `)
-//     const data = await res.json()
-//     return {
-//         props: {
-//             completedTasks: data
-//         }
-//     }
-// }
