@@ -10,9 +10,11 @@ const AddTask = () => {
 
     const { user } = useContext(AuthContext)
 
-    const imgBbKey = "5264a75dacc9a5a19565b12a2671f321"
+    const imgBbKey = `${process.env.NEXT_PUBLIC_IMG}`
 
 
+
+    console.log(imgBbKey);
     // display image
 
     const [previewImage, setPreviewImage] = useState()

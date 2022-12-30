@@ -80,7 +80,7 @@ const Login = () => {
                     <p className="my-2 font-semibold text-white text-lg">-------------OR------------</p>
 
                     <div>
-                        <button onClick={handleGoogleSignIn} className='font-semibold text-xl  text-white py-2 px-3 rounded-md bg-teal-accent-400 hover:bg-teal-700 w-full'>Sign in with Google</button>
+                        <button onClick={handleGoogleSignIn} className='font-semibold text-xl  text-white py-2 px-4 rounded-md bg-teal-accent-400 hover:bg-teal-700 w-full'>Sign in with Google</button>
                     </div>
                     <p className='text-sm md:text-lg'>New to MY NOTEPAD ? <Link className='text-xl text-blue-700 hover:underline' href='/signup'>Sign up now</Link></p>
                 </div>
