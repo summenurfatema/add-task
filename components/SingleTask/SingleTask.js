@@ -64,50 +64,10 @@ const SingleTask = ({ singleTask, handleDelete }) => {
                     </div>
                 </div>
             </div>
-
-            {/* <a href="#" className="block rounded-lg p-4 shadow-sm border-2 bg-gray-900 w-80 md:w-96">
-                <div>
-                    <FaTrash onClick={() => handleDelete(singleTask)} className='text-4xl text-teal-accent-400' />
-                </div>
-                <img
-                    alt="Home"
-                    src={img}
-                    className="h-56 w-56 ml-14 rounded-md object-cover"
-                />
-
-                <div className="mt-2">
-                    <dl>
-                        <div>
-                            <dd className="text-xl mb-3 text-center text-white">{title}</dd>
-                        </div>
-
-                        <div>
-
-
-                            <dd className="text-xl pb-5 text-white font-medium">{description}</dd>
-
-
-                            <div onClick={handleIncomplete} className="">
-                                <button className='bg-teal-accent-400 hover:bg-teal-700 text-sm md:text-lg w-full  rounded-lg font-medium text-gray-900 px-3 py-2'>Incomplete?</button>
-                            </div>
-
-
-                        </div>
-                    </dl>
-
-                    <div className="mt-6 flex items-center  gapx-6 text-xs">
-                        <div className="sm:inline-flex sm:shrink-0 sm:items-center">
-                        </div>
-
-
-
-
-                    </div>
-                </div>
-            </a> */}
-
-
         </div>
+
+
+
     );
 };
 

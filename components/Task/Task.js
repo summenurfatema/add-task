@@ -1,7 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
 import { toast } from "react-hot-toast";
-import Mytask1 from "../../pages/mytask1";
 import { FaTrashAlt } from "react-icons/fa";
 
 
