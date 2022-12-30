@@ -11,7 +11,7 @@ const Hero = () => {
                     <a href="/" className="mb-6 sm:mx-auto">
                         <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-50">
                             <svg
-                                className="w-10 h-10 text-teal-500"
+                                className="w-10 h-10 text-teal-accent-400"
                                 stroke="currentColor"
                                 viewBox="0 0 52 52"
                             >
@@ -65,7 +65,7 @@ const Hero = () => {
 
                                 <Link
                                     href="/addtask"
-                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-accent-400 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
                                 >
                                     Add a task
                                 </Link>
@@ -74,7 +74,7 @@ const Hero = () => {
 
                                 <Link
                                     href="/login"
-                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-600 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-teal-accent-400 hover:bg-teal-700 focus:shadow-outline focus:outline-none"
                                 >
                                     Add a task
                                 </Link>

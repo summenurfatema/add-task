@@ -39,8 +39,8 @@ const Task = ({ task }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        toast.error('This task deleted successfully')
-
+                        toast.success('This task deleted successfully')
+                        location.reload()
                     }
                 })
         }

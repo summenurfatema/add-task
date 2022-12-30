@@ -34,7 +34,7 @@ const Signup = () => {
                 form.reset('')
 
             })
-            .catch(error => toast.error(`${error}. 'Please  valid Email/Password'`))
+            .catch(error => toast.error(`${error}.Please  valid Email/Password`))
     }
 
 
@@ -81,7 +81,7 @@ const Signup = () => {
 
 
 
-                        <button className="font-semibold text-xl text-white py-2 rounded-md bg-teal-500 hover:bg-teal-700 w-full">Register</button>
+                        <button className="font-semibold text-xl text-white py-2 rounded-md bg-teal-accent-400 hover:bg-teal-700 w-full">Register</button>
                         <p className='text-xl text-white'>Already have an account? <Link className='text-xl text-blue-700 hover:underline' href='/login'>Log in here</Link></p>
 
                     </form>

@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar/NavBar";
 import SingleTask from "../components/SingleTask/SingleTask";
 
 
+
 const CompletedTask = () => {
 
     const { user } = useContext(AuthContext)
@@ -39,18 +40,32 @@ const CompletedTask = () => {
             <NavBar />
 
             <div>
-                <div className="grid grid-cols-1 px-6 md:grid-cols-3 gap-6 bg-black min-h-screen z-0 py-7" >
+
+                {
+                    completedTasks.length === 0 ?
+
+                        <div>
+
+                            <img src='https://img.freepik.com/free-vector/white-outline-geometric-hexagonal-bipyramid-background-vector_53876-176699.jpg?w=740&t=st=1672392583~exp=1672393183~hmac=e8a6d288c5364e55d4cf8cec89438b236bd1015e9413d4dd2b147ed22472e1bf' className="min-h-screen min-w-full" alt='' />
+                        </div>
+
+                        :
 
 
-                    {completedTasks.map(singleTask =>
+                        <div className="grid grid-cols-1 px-6 md:grid-cols-3 gap-6 bg-black min-h-screen z-0 py-7" >
 
 
-                        <SingleTask key={singleTask._id}
-                            singleTask={singleTask}
-                            handleDelete={handleDelete}
 
-                        />)}
-                </div>
+                            {completedTasks.map(singleTask =>
+
+
+                                <SingleTask key={singleTask._id}
+                                    singleTask={singleTask}
+                                    handleDelete={handleDelete}
+
+                                />)}
+                        </div>
+                }
             </div>
 
         </div>

@@ -24,7 +24,7 @@ const SingleTask = ({ singleTask, handleDelete }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    toast.success("Ops !!! It was an incomplete task")
+                    toast.error("Ops !!! It was an incomplete task")
                 }
             })
     }

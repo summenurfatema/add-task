@@ -11,7 +11,7 @@ const AddTask = () => {
     const { user } = useContext(AuthContext)
 
     const imgBbKey = "5264a75dacc9a5a19565b12a2671f321"
-    console.log(imgBbKey)
+
 
     // display image
 
@@ -88,7 +88,7 @@ const AddTask = () => {
         <div>
 
             <NavBar />
-            <div className='bg-black flex justify-center items-center py-16 min-h-[1000px] '>
+            <div className='bg-black flex justify-center items-center py-16 min-h-screen px-3  '>
                 <div className="flex flex-col items-center space-y-1 shadow-lg  w-[600px] p-10 md:space-y-3 border-2 bg-gray-900 hover:shadow-white hover:shadow-lg">
 
                     <h1 className='text-3xl text-center font-bold mb-10 text-white border-b w-full pb-2'>Add a task <FaPencilAlt className='inline-block text-teal-accent-400 mb-2' /></h1>
